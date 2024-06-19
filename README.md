@@ -1,3 +1,9 @@
+# Disclaimer
+
+This repository has been forked from the original creator @riad-azz, for a personal project I needed more information than just the video URL.
+The only thing that has been added are extra responses, instead of only return the "videoUrl" the API will now also return the title, description, thumbnail and source url.
+The source url contains the profile name and post ID.
+
 # Instagram Video Scraper API
 
 Scrape instagram videos with no login required using puppeteer and express.
@@ -11,7 +17,7 @@ This is a powerful Instagram video scraper built using Express.js and Puppeteer.
 Clone the repository
 
 ```bash
-git clone https://github.com/riad-azz/instagram-video-scraper.git
+git clone https://github.com/Woutervdvelde/instagram-video-scraper.git
 ```
 
 Install dependencies
@@ -60,7 +66,11 @@ fetch(apiUrl)
 
 ```json
 {
+  "title": "title text...",
+  "description": "10K likes, 47 coments - channel on June 17, 2024: Description...",
+  "thumbnail": "https://scontent-ams2-1.cdninstagram.com/v/t51...jpg?...",
   "videoUrl": "https://scontent.cdninstagram.com/v/t50.2886-16/385047357_643...mp4?...",
+  "source": "https://instagram.com/profile/p/C19ZXkXtMqD"
 }
 ```
 

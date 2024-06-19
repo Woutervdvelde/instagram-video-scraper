@@ -29,7 +29,13 @@ const getPostId = (postUrl) => {
   return postId;
 };
 
-const getVideoUrl = (html) => {
+function extractProfileFromDescription(description) {
+  const pattern = /-\s+([^-\s]+)\s+on\s+/;
+  const match = description.match(pattern);      
+  return match ? match[1] : null;
+}
+
+const getVideoDetails = (html, postId) => {
   const $ = cheerio.load(html);
 
   // Check if this post exists
@@ -45,16 +51,22 @@ const getVideoUrl = (html) => {
   }
 
   // Get video metadata
-  const videoUrl = $("video").attr("src");
-  if (!videoUrl) {
+  const videoElement = $("video")
+  if (!videoElement) {
     throw new CustomError("This post does not contain a video", 404);
   }
 
-  return videoUrl;
+  const title = $('meta[property="og:title"]').attr('content')
+  const description = $('meta[name="description"]').attr('content')
+  const thumbnail = videoElement.parent().find("img").attr("src")
+  const videoUrl = $("video").attr("src");
+  const source = `https://instagram.com/${extractProfileFromDescription(description)}/p/${postId}`
+
+  return { title, description, thumbnail, videoUrl, source };
 }
 
 
 module.exports = {
   getPostId,
-  getVideoUrl
+  getVideoDetails
 }
