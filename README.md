@@ -1,7 +1,7 @@
 # Disclaimer
 
 This repository has been forked from the original creator @riad-azz, for a personal project I needed more information than just the video URL.
-The only thing that has been added are extra responses, instead of only return the "videoUrl" the API will now also return the title, description, thumbnail and source url.
+The only thing that has been added are extra responses, instead of only returning the "videoUrl" the API will now also return the title, description, thumbnail and source url.
 The source url contains the profile name and post ID.
 
 # Instagram Video Scraper API
